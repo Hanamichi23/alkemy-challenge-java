@@ -1,6 +1,7 @@
 package com.alkemy.disney.controller;
 
 import com.alkemy.disney.DTO.PersonajeDTO;
+import com.alkemy.disney.DTO.PersonajeListadoDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.service.impl.PersonajeService;
@@ -45,7 +46,7 @@ public class PersonajeController {
 
     @Operation(summary = "Obtener todos los personajes")
     @GetMapping
-    public ResponseEntity<List<PersonajeDTO>> listar()
+    public ResponseEntity<List<PersonajeListadoDTO>> listar()
     {
         return ResponseEntity.ok(personajeService.listar());
     }

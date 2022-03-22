@@ -1,7 +1,9 @@
 package com.alkemy.disney.service.impl;
 
 import com.alkemy.disney.DTO.PersonajeDTO;
+import com.alkemy.disney.DTO.PersonajeListadoDTO;
 import com.alkemy.disney.DTO.mapper.PersonajeDTOModelMapper;
+import com.alkemy.disney.DTO.mapper.PersonajeListadoDTOModelMapper;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.model.Personaje;
@@ -23,12 +25,15 @@ public class PersonajeService implements IPersonajeService {
 
     private final PersonajeRepository personajeRepository;
     private final PersonajeDTOModelMapper personajeDTOModelMapper;
+    private final PersonajeListadoDTOModelMapper personajeListadoDTOModelMapper;
 
     @Autowired
-    public PersonajeService(PersonajeRepository personajeRepository, PersonajeDTOModelMapper personajeDTOModelMapper)
+    public PersonajeService(PersonajeRepository personajeRepository, PersonajeDTOModelMapper personajeDTOModelMapper,
+                            PersonajeListadoDTOModelMapper personajeListadoDTOModelMapper)
     {
         this.personajeRepository = personajeRepository;
         this.personajeDTOModelMapper = personajeDTOModelMapper;
+        this.personajeListadoDTOModelMapper = personajeListadoDTOModelMapper;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -58,9 +63,9 @@ public class PersonajeService implements IPersonajeService {
     }
 
     @Override
-    public List<PersonajeDTO> listar()
+    public List<PersonajeListadoDTO> listar()
     {
-        return personajeDTOModelMapper.toDTOList(personajeRepository.findAll());
+        return personajeListadoDTOModelMapper.toDTOList(personajeRepository.findAll());
     }
 
     @Transactional(rollbackFor = Exception.class)

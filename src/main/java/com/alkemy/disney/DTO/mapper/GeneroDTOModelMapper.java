@@ -21,9 +21,9 @@ public class GeneroDTOModelMapper {
         this.objectMapper = objectMapper;
     }
 
-    public GeneroDTO toDTO(Genero categoria)
+    public GeneroDTO toDTO(Genero genero)
     {
-        return objectMapper.convertValue(categoria, GeneroDTO.class);
+        return objectMapper.convertValue(genero, GeneroDTO.class);
     }
 
     public Genero toModel(GeneroDTO generoDTO)

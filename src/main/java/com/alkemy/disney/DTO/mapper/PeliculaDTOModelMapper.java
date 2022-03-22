@@ -20,9 +20,9 @@ public class PeliculaDTOModelMapper {
         this.objectMapper = objectMapper;
     }
 
-    public PeliculaDTO toDTO(Pelicula categoria)
+    public PeliculaDTO toDTO(Pelicula pelicula)
     {
-        return objectMapper.convertValue(categoria, PeliculaDTO.class);
+        return objectMapper.convertValue(pelicula, PeliculaDTO.class);
     }
 
     public Pelicula toModel(PeliculaDTO peliculaDTO)

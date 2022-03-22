@@ -1,7 +1,9 @@
 package com.alkemy.disney.service.impl;
 
 import com.alkemy.disney.DTO.PeliculaDTO;
+import com.alkemy.disney.DTO.PeliculaListadoDTO;
 import com.alkemy.disney.DTO.mapper.PeliculaDTOModelMapper;
+import com.alkemy.disney.DTO.mapper.PeliculaListadoDTOModelMapper;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.model.Pelicula;
@@ -23,12 +25,15 @@ public class PeliculaService implements IPeliculaService {
 
     private final PeliculaRepository peliculaRepository;
     private final PeliculaDTOModelMapper peliculaDTOModelMapper;
+    private final PeliculaListadoDTOModelMapper peliculaListadoDTOModelMapper;
 
     @Autowired
-    public PeliculaService(PeliculaRepository peliculaRepository, PeliculaDTOModelMapper peliculaDTOModelMapper)
+    public PeliculaService(PeliculaRepository peliculaRepository, PeliculaDTOModelMapper peliculaDTOModelMapper,
+                           PeliculaListadoDTOModelMapper peliculaListadoDTOModelMapper)
     {
         this.peliculaRepository = peliculaRepository;
         this.peliculaDTOModelMapper = peliculaDTOModelMapper;
+        this.peliculaListadoDTOModelMapper = peliculaListadoDTOModelMapper;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -58,9 +63,9 @@ public class PeliculaService implements IPeliculaService {
     }
 
     @Override
-    public List<PeliculaDTO> listar()
+    public List<PeliculaListadoDTO> listar()
     {
-        return peliculaDTOModelMapper.toDTOList(peliculaRepository.findAll());
+        return peliculaListadoDTOModelMapper.toDTOList(peliculaRepository.findAll());
     }
 
     @Transactional(rollbackFor = Exception.class)

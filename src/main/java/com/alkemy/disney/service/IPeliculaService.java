@@ -1,6 +1,7 @@
 package com.alkemy.disney.service;
 
 import com.alkemy.disney.DTO.PeliculaDTO;
+import com.alkemy.disney.DTO.PeliculaListadoDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 
@@ -10,7 +11,7 @@ public interface IPeliculaService {
 
     public PeliculaDTO agregar(PeliculaDTO peliculaDTO) throws BadRequestException;
     public PeliculaDTO buscar(Long id) throws ResourceNotFoundException;
-    public List<PeliculaDTO> listar();
+    public List<PeliculaListadoDTO> listar();
     public PeliculaDTO actualizar(PeliculaDTO peliculaDTO) throws BadRequestException, ResourceNotFoundException;
     public void eliminar(Long id) throws ResourceNotFoundException, BadRequestException;
 }

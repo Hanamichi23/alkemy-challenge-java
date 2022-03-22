@@ -1,7 +1,9 @@
 package com.alkemy.disney.service.impl;
 
 import com.alkemy.disney.DTO.GeneroDTO;
+import com.alkemy.disney.DTO.GeneroListadoDTO;
 import com.alkemy.disney.DTO.mapper.GeneroDTOModelMapper;
+import com.alkemy.disney.DTO.mapper.GeneroListadoDTOModelMapper;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.model.Genero;
@@ -23,12 +25,15 @@ public class GeneroService implements IGeneroService {
 
     private final GeneroRepository generoRepository;
     private final GeneroDTOModelMapper generoDTOModelMapper;
+    private final GeneroListadoDTOModelMapper generoListadoDTOModelMapper;
 
     @Autowired
-    public GeneroService(GeneroRepository generoRepository, GeneroDTOModelMapper generoDTOModelMapper)
+    public GeneroService(GeneroRepository generoRepository, GeneroDTOModelMapper generoDTOModelMapper,
+                         GeneroListadoDTOModelMapper generoListadoDTOModelMapper)
     {
         this.generoRepository = generoRepository;
         this.generoDTOModelMapper = generoDTOModelMapper;
+        this.generoListadoDTOModelMapper = generoListadoDTOModelMapper;
     }
 
     @Transactional(rollbackFor = Exception.class)
@@ -58,9 +63,9 @@ public class GeneroService implements IGeneroService {
     }
 
     @Override
-    public List<GeneroDTO> listar()
+    public List<GeneroListadoDTO> listar()
     {
-        return generoDTOModelMapper.toDTOList(generoRepository.findAll());
+        return generoListadoDTOModelMapper.toDTOList(generoRepository.findAll());
     }
 
     @Transactional(rollbackFor = Exception.class)

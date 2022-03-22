@@ -1,6 +1,7 @@
 package com.alkemy.disney.controller;
 
 import com.alkemy.disney.DTO.PeliculaDTO;
+import com.alkemy.disney.DTO.PeliculaListadoDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.service.impl.PeliculaService;
@@ -45,7 +46,7 @@ public class PeliculaController {
 
     @Operation(summary = "Obtener todas las películas")
     @GetMapping
-    public ResponseEntity<List<PeliculaDTO>> listar()
+    public ResponseEntity<List<PeliculaListadoDTO>> listar()
     {
         return ResponseEntity.ok(peliculaService.listar());
     }

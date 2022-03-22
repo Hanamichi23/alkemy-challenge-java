@@ -21,9 +21,9 @@ public class PersonajeDTOModelMapper {
         this.objectMapper = objectMapper;
     }
 
-    public PersonajeDTO toDTO(Personaje categoria)
+    public PersonajeDTO toDTO(Personaje personaje)
     {
-        return objectMapper.convertValue(categoria, PersonajeDTO.class);
+        return objectMapper.convertValue(personaje, PersonajeDTO.class);
     }
 
     public Personaje toModel(PersonajeDTO personajeDTO)

@@ -1,6 +1,7 @@
 package com.alkemy.disney.controller;
 
 import com.alkemy.disney.DTO.GeneroDTO;
+import com.alkemy.disney.DTO.GeneroListadoDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.service.impl.GeneroService;
@@ -45,7 +46,7 @@ public class GeneroController {
 
     @Operation(summary = "Obtener todos los géneros")
     @GetMapping
-    public ResponseEntity<List<GeneroDTO>> listar()
+    public ResponseEntity<List<GeneroListadoDTO>> listar()
     {
         return ResponseEntity.ok(generoService.listar());
     }
