@@ -7,10 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "Personajes")
+@Table(name = "Personaje")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Personaje {
 
@@ -34,6 +36,9 @@ public class Personaje {
 
     @Column(columnDefinition = "TEXT")
     private String historia;
+
+    @ManyToMany(mappedBy = "personajes")
+    private Set<Pelicula> peliculas = new HashSet<>();
 
 
     public Personaje(String nombre, String imagenUrl, Integer edad, Double peso, String historia)
