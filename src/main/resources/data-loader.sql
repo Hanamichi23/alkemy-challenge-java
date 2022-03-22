@@ -1,0 +1,1 @@
+INSERT INTO Personajes(id, nombre, imagen_url, edad, peso, historia) VALUES(NEXT VALUE FOR personaje_sequence, 'Frodo', 'http://www.imagen.com/frodo.png', 25, 68.5, 'Héroe de la Tierra Media');
