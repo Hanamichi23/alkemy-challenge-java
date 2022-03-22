@@ -1,7 +1,6 @@
 package com.alkemy.disney.model;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +15,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Pelicula")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor
 public class Pelicula {
 
     @Id
@@ -39,18 +38,29 @@ public class Pelicula {
     private Integer calificacion;
 
     @ManyToMany(fetch = FetchType.LAZY)
+    // Sin especificar el nombre de las columnas los pone con el nombre en plural
     @JoinTable(name = "pelicula_x_personaje",
-            joinColumns = { @JoinColumn(name = "pelicula_id") },                // Sin especificar el nombre de las columnas
-            inverseJoinColumns = { @JoinColumn(name = "personaje_id") } )       // los pone con el nombre en plural
+            joinColumns = { @JoinColumn(name = "pelicula_id") },
+            inverseJoinColumns = { @JoinColumn(name = "personaje_id") } )
     private Set<Personaje> personajes = new HashSet<>();
 
 
-    public Pelicula(Long id, String titulo, String imagenUrl, LocalDate fechaCreacion, Integer calificacion)
+    public Pelicula(String titulo, String imagenUrl, LocalDate fechaCreacion, Integer calificacion, Set<Personaje> personajes)
+    {
+        this.titulo = titulo;
+        this.imagenUrl = imagenUrl;
+        this.fechaCreacion = fechaCreacion;
+        this.calificacion = calificacion;
+        if (personajes != null) this.personajes = personajes;
+    }
+
+    public Pelicula(Long id, String titulo, String imagenUrl, LocalDate fechaCreacion, Integer calificacion, Set<Personaje> personajes)
     {
         this.id = id;
         this.titulo = titulo;
         this.imagenUrl = imagenUrl;
         this.fechaCreacion = fechaCreacion;
         this.calificacion = calificacion;
+        if (personajes != null) this.personajes = personajes;
     }
 }

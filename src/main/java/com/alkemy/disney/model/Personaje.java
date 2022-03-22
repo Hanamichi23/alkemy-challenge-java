@@ -1,7 +1,6 @@
 package com.alkemy.disney.model;
 
 import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "Personaje")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor
 public class Personaje {
 
     @Id
@@ -41,12 +40,24 @@ public class Personaje {
     private Set<Pelicula> peliculas = new HashSet<>();
 
 
-    public Personaje(String nombre, String imagenUrl, Integer edad, Double peso, String historia)
+    public Personaje(String nombre, String imagenUrl, Integer edad, Double peso, String historia, Set<Pelicula> peliculas)
     {
         this.nombre = nombre;
         this.imagenUrl = imagenUrl;
         this.edad = edad;
         this.peso = peso;
         this.historia = historia;
+        if (peliculas != null) this.peliculas = peliculas;
+    }
+
+    public Personaje(Long id, String nombre, String imagenUrl, Integer edad, Double peso, String historia, Set<Pelicula> peliculas)
+    {
+        this.id = id;
+        this.nombre = nombre;
+        this.imagenUrl = imagenUrl;
+        this.edad = edad;
+        this.peso = peso;
+        this.historia = historia;
+        if (peliculas != null) this.peliculas = peliculas;
     }
 }

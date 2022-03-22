@@ -38,7 +38,7 @@ public class PersonajeService implements IPersonajeService {
         Personaje personaje = personajeDTOModelMapper.toModel(personajeDTO);
 
         if (personaje.getId() != null)
-            throw new BadRequestException("El registro de personajees no puede recibir un ID.");
+            throw new BadRequestException("El registro de personajes no puede recibir un ID.");
 
         Personaje personajeSaved = personajeRepository.save(personaje);
         log.info("Se registró un personaje con ID " + personajeSaved.getId() + ".");
