@@ -1,6 +1,7 @@
 package com.alkemy.disney.DTO;
 
 import com.alkemy.disney.model.Personaje;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,8 @@ public class PeliculaDTO {
     private String imagenUrl;
     private LocalDate fechaCreacion;
     private Integer calificacion;
+
+    @JsonIgnoreProperties(value = "peliculas")
     private Set<Personaje> personajes = new HashSet<>();
 
 

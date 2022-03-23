@@ -1,5 +1,6 @@
 package com.alkemy.disney.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,7 +37,8 @@ public class Personaje {
     @Column(columnDefinition = "TEXT")
     private String historia;
 
-    @ManyToMany(mappedBy = "personajes")
+    @ManyToMany(mappedBy = "personajes", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = "personajes")
     private Set<Pelicula> peliculas = new HashSet<>();
 
 

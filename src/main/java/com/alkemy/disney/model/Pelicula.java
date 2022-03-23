@@ -1,5 +1,6 @@
 package com.alkemy.disney.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -39,9 +40,11 @@ public class Pelicula {
 
     @ManyToMany(fetch = FetchType.LAZY)
     // Sin especificar el nombre de las columnas los pone con el nombre en plural
-    @JoinTable(name = "pelicula_x_personaje",
+    @JoinTable(name = "Pelicula_X_Personaje",
             joinColumns = { @JoinColumn(name = "pelicula_id") },
             inverseJoinColumns = { @JoinColumn(name = "personaje_id") } )
+    // El allowSetters es para evitar un error del ObjectMapper en caso de dejar la anotación habilitada
+    @JsonIgnoreProperties(value = "peliculas")
     private Set<Personaje> personajes = new HashSet<>();
 
 

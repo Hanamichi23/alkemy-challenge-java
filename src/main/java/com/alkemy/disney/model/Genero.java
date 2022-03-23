@@ -1,5 +1,6 @@
 package com.alkemy.disney.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,9 +30,10 @@ public class Genero {
     private String imagenUrl;
 
     // Hacer la relación bidireccional es más eficiente, pero la dejo unidireccional porque así está en el enunciado
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     // Esto es para que Hibernate no cree una nueva tabla para mapear la asociación
     @JoinColumn(name = "genero_id")
+    @JsonIgnoreProperties(value = "personajes")
     private List<Pelicula> peliculas = new ArrayList<>();
 
 
