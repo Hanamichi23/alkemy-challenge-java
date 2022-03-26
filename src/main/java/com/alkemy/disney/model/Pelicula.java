@@ -15,7 +15,7 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "Pelicula")
+@Table(name = "Peliculas")
 @Getter @Setter @NoArgsConstructor
 public class Pelicula {
 

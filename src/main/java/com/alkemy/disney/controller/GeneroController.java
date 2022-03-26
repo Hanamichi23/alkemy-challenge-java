@@ -3,6 +3,7 @@ package com.alkemy.disney.controller;
 import com.alkemy.disney.DTO.GeneroDTO;
 import com.alkemy.disney.DTO.GeneroListadoDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
+import com.alkemy.disney.exceptions.ResourceConflictException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.service.impl.GeneroService;
 import com.alkemy.disney.util.JsonResponseMessage;
@@ -32,7 +33,7 @@ public class GeneroController {
 
     @Operation(summary = "Registrar un nuevo género")
     @PostMapping
-    public ResponseEntity<GeneroDTO> agregar(@RequestBody GeneroDTO generoDTO) throws BadRequestException
+    public ResponseEntity<GeneroDTO> agregar(@RequestBody GeneroDTO generoDTO) throws BadRequestException, ResourceConflictException
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(generoService.agregar(generoDTO));
     }
@@ -53,7 +54,7 @@ public class GeneroController {
 
     @Operation(summary = "Actualizar un género")
     @PutMapping
-    public ResponseEntity<GeneroDTO> actualizar(@RequestBody GeneroDTO generoDTO) throws BadRequestException, ResourceNotFoundException
+    public ResponseEntity<GeneroDTO> actualizar(@RequestBody GeneroDTO generoDTO) throws BadRequestException, ResourceNotFoundException, ResourceConflictException
     {
         return ResponseEntity.status(HttpStatus.OK).body(generoService.actualizar(generoDTO));
     }

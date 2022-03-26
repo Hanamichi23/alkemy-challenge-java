@@ -5,6 +5,7 @@ import com.alkemy.disney.DTO.GeneroListadoDTO;
 import com.alkemy.disney.DTO.mapper.GeneroDTOModelMapper;
 import com.alkemy.disney.DTO.mapper.GeneroListadoDTOModelMapper;
 import com.alkemy.disney.exceptions.BadRequestException;
+import com.alkemy.disney.exceptions.ResourceConflictException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.model.Genero;
 import com.alkemy.disney.repository.GeneroRepository;
@@ -38,12 +39,15 @@ public class GeneroService implements IGeneroService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public GeneroDTO agregar(GeneroDTO generoDTO) throws BadRequestException
+    public GeneroDTO agregar(GeneroDTO generoDTO) throws BadRequestException, ResourceConflictException
     {
         Genero genero = generoDTOModelMapper.toModel(generoDTO);
 
         if (genero.getId() != null)
             throw new BadRequestException("El registro de géneros no puede recibir un ID.");
+
+        if (generoRepository.findByNombre(genero.getNombre()).isPresent())
+            throw new ResourceConflictException("El género con el nombre '" + genero.getNombre() + "' ya existe.");
 
         Genero generoSaved = generoRepository.save(genero);
         log.info("Se registró un género con ID " + generoSaved.getId() + ".");
@@ -70,7 +74,7 @@ public class GeneroService implements IGeneroService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public GeneroDTO actualizar(GeneroDTO generoDTO) throws BadRequestException, ResourceNotFoundException
+    public GeneroDTO actualizar(GeneroDTO generoDTO) throws BadRequestException, ResourceNotFoundException, ResourceConflictException
     {
         Genero genero = generoDTOModelMapper.toModel(generoDTO);
 
@@ -79,6 +83,10 @@ public class GeneroService implements IGeneroService {
 
         if (generoRepository.findById(genero.getId()).isEmpty())
             throw new ResourceNotFoundException("El género con el ID " + genero.getId() + " no existe.");
+
+        Optional<Genero> generoMismoNombre = generoRepository.findByNombre(genero.getNombre());
+        if (generoMismoNombre.isPresent() && !generoMismoNombre.get().getId().equals(genero.getId()))
+            throw new ResourceConflictException("El género con el nombre '" + genero.getNombre() + "' ya existe.");
 
         return generoDTOModelMapper.toDTO(generoRepository.save(genero));
     }

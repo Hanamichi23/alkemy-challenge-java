@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "Genero")
+@Table(name = "Generos")
 @Getter @Setter @NoArgsConstructor
 public class Genero {
 
