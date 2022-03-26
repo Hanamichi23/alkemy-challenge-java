@@ -17,6 +17,7 @@ import java.util.List;
 
 
 @Tag(name = "Películas")
+@CrossOrigin
 @RestController
 @RequestMapping("/movies")
 public class PeliculaController {

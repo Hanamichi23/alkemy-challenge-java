@@ -18,6 +18,7 @@ import java.util.List;
 
 
 @Tag(name = "Géneros")
+@CrossOrigin
 @RestController
 @RequestMapping("/genres")
 public class GeneroController {
