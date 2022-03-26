@@ -39,7 +39,7 @@ INSERT INTO Pelicula_X_Personaje(pelicula_id, personaje_id) VALUES(2, 3);
 
 -- Roles --
 
-INSERT INTO Roles(id, nombre) VALUES(NEXT VALUE FOR rol_sequence, 'User');
+INSERT INTO Roles(id, nombre) VALUES(NEXT VALUE FOR rol_sequence, 'ROLE_USER');
 
 
 -- Usuarios --
