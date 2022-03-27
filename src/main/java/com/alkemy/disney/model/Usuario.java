@@ -34,6 +34,7 @@ public class Usuario implements UserDetails {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String contrasena;
 
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "rol_id")
     private Rol rol;
