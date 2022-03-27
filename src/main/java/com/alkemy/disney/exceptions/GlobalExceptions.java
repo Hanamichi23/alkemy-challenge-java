@@ -20,4 +20,10 @@ public class GlobalExceptions {
     {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new JsonResponseError(HttpStatus.NOT_FOUND.value(), ex.getMessage()));
     }
+
+    @ExceptionHandler(ResourceConflictException.class)
+    public ResponseEntity<JsonResponseError> procesarExcepcionResourceConflict(ResourceConflictException ex)
+    {
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new JsonResponseError(HttpStatus.CONFLICT.value(), ex.getMessage()));
+    }
 }

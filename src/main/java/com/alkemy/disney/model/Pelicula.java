@@ -66,4 +66,24 @@ public class Pelicula {
         this.calificacion = calificacion;
         if (personajes != null) this.personajes = personajes;
     }
+
+    public void setPersonajes(Set<Personaje> personajes)
+    {
+        this.personajes.clear();
+        if (personajes != null) {
+            this.personajes.addAll(personajes);
+        }
+    }
+
+    public void addPersonaje(Personaje personaje)
+    {
+        this.personajes.add(personaje);
+        personaje.addPelicula(this);
+    }
+
+    public void removePersonaje(Personaje personaje)
+    {
+        this.personajes.remove(personaje);
+        personaje.removePelicula(this);
+    }
 }

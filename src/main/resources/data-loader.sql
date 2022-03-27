@@ -22,6 +22,7 @@ INSERT INTO Peliculas(id, titulo, imagen_url, fecha_creacion, calificacion, gene
 INSERT INTO Personajes(id, nombre, imagen_url, edad, peso, historia) VALUES(NEXT VALUE FOR personaje_sequence, 'Frodo Bolsón', 'http://www.imagen-personaje.com/frodo.png', 25, 68.5, 'Es un hobbit, llamado también "Portador del Anillo". Fue el encargado de llevar el Anillo Único hasta el Monte del Destino para destruirlo, acompañado por su valiente y fiel compañero Sam.');
 INSERT INTO Personajes(id, nombre, imagen_url, edad, peso, historia) VALUES(NEXT VALUE FOR personaje_sequence, 'Gandalf', 'http://www.imagen-personaje.com/gandalf.png', 64, 84.2, 'Es un mago, uno de los espíritus maia enviados a la Tierra Media durante la Tercera Edad del Sol para ayudar a sus habitantes en la lucha contra el «señor oscuro» Sauron.');
 INSERT INTO Personajes(id, nombre, imagen_url, edad, peso, historia) VALUES(NEXT VALUE FOR personaje_sequence, 'Boromir', 'http://www.imagen-personaje.com/boromir.png', 42, 79.7, 'Es un dúnadan, hijo mayor del senescal de Gondor Denethor II, hermano mayor de Faramir y predilecto del vigésimo cuarto y último senescal regente del reino de Gondor.');
+INSERT INTO Personajes(id, nombre, imagen_url, edad, peso, historia) VALUES(NEXT VALUE FOR personaje_sequence, 'Harry Potter', 'http://www.imagen-personaje.com/harrypotter.png', 14, 52.7, 'En su undécimo cumpleaños se entera de que es un mago. Potter concurre al Colegio Hogwarts de Magia y Hechicería para practicar bajo la guía del director Albus Dumbledore y demás profesores.');
 
 
 -- Películas x Personajes --

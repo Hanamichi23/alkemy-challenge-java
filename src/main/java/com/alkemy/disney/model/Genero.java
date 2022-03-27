@@ -51,4 +51,22 @@ public class Genero {
         this.imagenUrl = imagenUrl;
         if (peliculas != null) this.peliculas = peliculas;
     }
+
+    public void setPeliculas(List<Pelicula> peliculas)
+    {
+        this.peliculas.clear();
+        if (peliculas != null) {
+            this.peliculas.addAll(peliculas);
+        }
+    }
+
+    public void addPelicula(Pelicula pelicula)
+    {
+        this.peliculas.add(pelicula);
+    }
+
+    public void removePelicula(Pelicula pelicula)
+    {
+        this.peliculas.remove(pelicula);
+    }
 }

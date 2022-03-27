@@ -23,7 +23,7 @@ public class EmailSenderService implements IEmailSenderService {
     @Override
     public void sendRegistrationEmail(String toAddress) throws IOException
     {
-        Email from = new Email("hana23@gmail.com");
+        Email from = new Email("disneyalkemy23@gmail.com");
         String subject = "Welcome to Disney!";
         Email to = new Email(toAddress);
         Content content = new Content("text/plain", "Te damos la bienvenida a Disney, donde podrás encontrar a tus personajes favoritos " +

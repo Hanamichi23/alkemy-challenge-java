@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -61,5 +62,25 @@ public class Personaje {
         this.peso = peso;
         this.historia = historia;
         if (peliculas != null) this.peliculas = peliculas;
+    }
+
+    public void setPeliculas(Set<Pelicula> peliculas)
+    {
+        this.peliculas.clear();
+        if (peliculas != null) {
+            this.peliculas.addAll(peliculas);
+        }
+    }
+
+    public void addPelicula(Pelicula pelicula)
+    {
+        this.peliculas.add(pelicula);
+        pelicula.addPersonaje(this);
+    }
+
+    public void removePelicula(Pelicula pelicula)
+    {
+        this.peliculas.remove(pelicula);
+        pelicula.removePersonaje(this);
     }
 }
