@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -33,7 +34,7 @@ public class PersonajeController {
 
     @Operation(summary = "Registrar un nuevo personaje")
     @PostMapping
-    public ResponseEntity<PersonajeDTO> agregar(@RequestBody PersonajeDTO personajeDTO) throws BadRequestException
+    public ResponseEntity<PersonajeDTO> agregar(@Valid @RequestBody PersonajeDTO personajeDTO) throws BadRequestException
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(personajeService.agregar(personajeDTO));
     }
@@ -54,7 +55,7 @@ public class PersonajeController {
 
     @Operation(summary = "Actualizar un personaje")
     @PutMapping
-    public ResponseEntity<PersonajeDTO> actualizar(@RequestBody PersonajeDTO personajeDTO) throws BadRequestException, ResourceNotFoundException
+    public ResponseEntity<PersonajeDTO> actualizar(@Valid @RequestBody PersonajeDTO personajeDTO) throws BadRequestException, ResourceNotFoundException
     {
         return ResponseEntity.status(HttpStatus.OK).body(personajeService.actualizar(personajeDTO));
     }

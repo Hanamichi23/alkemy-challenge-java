@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class UsuarioController {
 
     @Operation(summary = "Registrar un nuevo usuario")
     @PostMapping("/auth/register")
-    public ResponseEntity<UsuarioDTO> registrar(@RequestBody UsuarioDTO usuarioDTO) throws BadRequestException, ResourceConflictException, IOException
+    public ResponseEntity<UsuarioDTO> registrar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws BadRequestException, ResourceConflictException, IOException
     {
         UsuarioDTO usuarioRegistradoDTO = usuarioService.registrar(usuarioDTO);
         emailSenderService.sendRegistrationEmail(usuarioDTO.getEmail());
@@ -68,7 +69,7 @@ public class UsuarioController {
 
     @Operation(summary = "Actualizar un usuario")
     @PutMapping("/usuarios")
-    public ResponseEntity<UsuarioDTO> actualizar(@RequestBody UsuarioDTO usuarioDTO) throws BadRequestException, ResourceNotFoundException, ResourceConflictException
+    public ResponseEntity<UsuarioDTO> actualizar(@Valid @RequestBody UsuarioDTO usuarioDTO) throws BadRequestException, ResourceNotFoundException, ResourceConflictException
     {
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.actualizar(usuarioDTO));
     }

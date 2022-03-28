@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +19,7 @@ import java.util.Set;
 public class PeliculaDTO {
 
     private Long id;
+    @NotBlank(message = "El título no puede ser nulo ni vacío")
     private String titulo;
     private String imagenUrl;
     private LocalDate fechaCreacion;

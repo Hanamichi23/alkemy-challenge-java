@@ -13,8 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 
-@SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@SpringBootTest
 public class PersonajeServiceTests {
 
     @Autowired
@@ -94,6 +94,7 @@ public class PersonajeServiceTests {
                 73.5,
                 "Es un elfo sinda. Formó parte de la llamada Comunidad del Anillo, cuyo objetivo era la destrucción del Anillo Único de Sauron.",
                 null));
+
         List<PersonajeListadoDTO> personajesDTO = personajeService.listar();
         Assertions.assertTrue(!personajesDTO.isEmpty());
         Assertions.assertTrue(personajesDTO.size() == 3);

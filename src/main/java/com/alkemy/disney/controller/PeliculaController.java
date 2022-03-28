@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -33,7 +34,7 @@ public class PeliculaController {
 
     @Operation(summary = "Registrar una nueva película")
     @PostMapping
-    public ResponseEntity<PeliculaDTO> agregar(@RequestBody PeliculaDTO peliculaDTO) throws BadRequestException
+    public ResponseEntity<PeliculaDTO> agregar(@Valid @RequestBody PeliculaDTO peliculaDTO) throws BadRequestException
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(peliculaService.agregar(peliculaDTO));
     }
@@ -54,7 +55,7 @@ public class PeliculaController {
 
     @Operation(summary = "Actualizar una película")
     @PutMapping
-    public ResponseEntity<PeliculaDTO> actualizar(@RequestBody PeliculaDTO peliculaDTO) throws BadRequestException, ResourceNotFoundException
+    public ResponseEntity<PeliculaDTO> actualizar(@Valid @RequestBody PeliculaDTO peliculaDTO) throws BadRequestException, ResourceNotFoundException
     {
         return ResponseEntity.status(HttpStatus.OK).body(peliculaService.actualizar(peliculaDTO));
     }

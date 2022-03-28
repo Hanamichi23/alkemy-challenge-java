@@ -14,8 +14,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-@SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@SpringBootTest
 public class PeliculaServiceTests {
 
     @Autowired

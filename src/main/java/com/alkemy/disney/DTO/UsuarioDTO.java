@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+
 
 @Schema(name = "Usuario")
 @JsonInclude(JsonInclude.Include.NON_NULL)  // Para evitar el 'contrasena: null' en el JSON
@@ -12,7 +14,9 @@ import lombok.*;
 public class UsuarioDTO {
 
     private Long id;
+    @NotBlank(message = "El email no puede ser nulo ni vacío")
     private String email;
+    @NotBlank(message = "La contraseña no puede ser nula ni vacía")
     private String contrasena;
 
     @Schema(hidden = true)

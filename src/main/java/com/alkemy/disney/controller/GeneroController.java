@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -34,7 +35,7 @@ public class GeneroController {
 
     @Operation(summary = "Registrar un nuevo género")
     @PostMapping
-    public ResponseEntity<GeneroDTO> agregar(@RequestBody GeneroDTO generoDTO) throws BadRequestException, ResourceConflictException
+    public ResponseEntity<GeneroDTO> agregar(@Valid @RequestBody GeneroDTO generoDTO) throws BadRequestException, ResourceConflictException
     {
         return ResponseEntity.status(HttpStatus.CREATED).body(generoService.agregar(generoDTO));
     }
@@ -55,7 +56,7 @@ public class GeneroController {
 
     @Operation(summary = "Actualizar un género")
     @PutMapping
-    public ResponseEntity<GeneroDTO> actualizar(@RequestBody GeneroDTO generoDTO) throws BadRequestException, ResourceNotFoundException, ResourceConflictException
+    public ResponseEntity<GeneroDTO> actualizar(@Valid @RequestBody GeneroDTO generoDTO) throws BadRequestException, ResourceNotFoundException, ResourceConflictException
     {
         return ResponseEntity.status(HttpStatus.OK).body(generoService.actualizar(generoDTO));
     }

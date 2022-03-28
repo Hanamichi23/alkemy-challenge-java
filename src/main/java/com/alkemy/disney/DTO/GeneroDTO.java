@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.NotBlank;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,6 +18,7 @@ import java.util.Set;
 public class GeneroDTO {
 
     private Long id;
+    @NotBlank(message = "El nombre no puede ser nulo ni vacío")
     private String nombre;
     private String imagenUrl;
 

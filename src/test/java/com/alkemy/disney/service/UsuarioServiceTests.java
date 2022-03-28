@@ -15,8 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 
-@SpringBootTest
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@SpringBootTest
 public class UsuarioServiceTests {
 
     @Autowired
