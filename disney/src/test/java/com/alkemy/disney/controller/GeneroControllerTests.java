@@ -2,7 +2,6 @@ package com.alkemy.disney.controller;
 
 import com.alkemy.disney.DTO.GeneroDTO;
 import com.alkemy.disney.DTO.GeneroListadoDTO;
-import com.alkemy.disney.DTO.PeliculaDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceConflictException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
@@ -24,7 +23,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
 import java.util.List;
 
 

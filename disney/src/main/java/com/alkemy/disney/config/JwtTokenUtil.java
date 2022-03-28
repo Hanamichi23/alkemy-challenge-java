@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +15,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 
-@Profile("!test")
 @Component
 public class JwtTokenUtil implements Serializable {
 
@@ -24,7 +22,7 @@ public class JwtTokenUtil implements Serializable {
 
     // Duración del Token en segundos
     public static final long JWT_TOKEN_VALIDITY = 24 * 60 * 60;
-    //public static final long JWT_TOKEN_VALIDITY = 70;
+    //public static final long JWT_TOKEN_VALIDITY = 60;
 
     @Value("${jwt.secret}")
     private String secret;

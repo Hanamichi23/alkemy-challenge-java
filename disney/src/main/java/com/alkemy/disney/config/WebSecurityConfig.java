@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.context.annotation.Profile;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -22,7 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 
-@Profile("!test")
 @EnableWebSecurity
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
 @Configuration
@@ -76,12 +74,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception
     {
-        // We don't need CSRF for this example
         httpSecurity.csrf().disable()
                 // dont authenticate this particular request
                 .authorizeRequests().antMatchers("/auth/login", "/auth/register").permitAll()
                 // all other requests need to be authenticated
                 .anyRequest().authenticated().and()
+                // Para desactivar la seguridad
                 //.anyRequest().permitAll().and()
                 // make sure we use stateless session; session won't be used to
                 // store user's state.
@@ -91,11 +89,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
     }
-
-    /*@Bean
-    public AuthenticationFailureHandler authenticationFailureHandler() {
-        return new JwtAuthenticationFailureHandler();
-    }*/
 
     // Para poder ingresar a la base de datos H2
     @Override

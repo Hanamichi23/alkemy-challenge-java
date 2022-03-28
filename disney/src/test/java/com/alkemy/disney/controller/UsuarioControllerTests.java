@@ -1,6 +1,5 @@
 package com.alkemy.disney.controller;
 
-import com.alkemy.disney.DTO.GeneroDTO;
 import com.alkemy.disney.DTO.UsuarioDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceConflictException;

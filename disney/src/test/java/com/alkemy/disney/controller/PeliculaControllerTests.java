@@ -2,7 +2,6 @@ package com.alkemy.disney.controller;
 
 import com.alkemy.disney.DTO.PeliculaDTO;
 import com.alkemy.disney.DTO.PeliculaListadoDTO;
-import com.alkemy.disney.DTO.PersonajeDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
 import com.alkemy.disney.repository.PeliculaRepository;

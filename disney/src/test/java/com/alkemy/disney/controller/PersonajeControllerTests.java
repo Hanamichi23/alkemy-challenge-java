@@ -4,7 +4,6 @@ import com.alkemy.disney.DTO.PersonajeDTO;
 import com.alkemy.disney.DTO.PersonajeListadoDTO;
 import com.alkemy.disney.exceptions.BadRequestException;
 import com.alkemy.disney.exceptions.ResourceNotFoundException;
-import com.alkemy.disney.model.Personaje;
 import com.alkemy.disney.repository.PersonajeRepository;
 import com.alkemy.disney.service.impl.PersonajeService;
 import com.alkemy.disney.util.JsonResponseError;
